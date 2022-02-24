@@ -72,9 +72,15 @@ public:
 
     // TODO: calculate physical attributes
     // M =
+    M = w * h * d * dens;
     // I0 =
+    I0 = Mat3f(1. / 12. * M * (h*h + d*d), 0, 0,
+               0, 1. / 12. * M * (h*h + d*d), 0,
+               0, 0, 1. / 12. * M * (h*h + d*d));
     // I0inv =
+    I0inv = I0.inverse();
     // Iinv =
+    Iinv  = R * I0inv * R.transpose();
 
     // vertices data (8 vertices)
     vdata0.push_back(Vec3f(-0.5*w, -0.5*h, -0.5*d));
